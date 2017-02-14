@@ -69,4 +69,8 @@ public class HttpServlet2 extends HttpServlet{
             resp.flushBuffer();
         }
     }
+    
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
 }
