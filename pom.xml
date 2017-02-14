@@ -15,12 +15,24 @@
         <jetty.plugin.version>9.2.3.v20140905</jetty.plugin.version>
     </properties>
 
+    <repositories>
+        <repository>
+            <id>ECI internal repository</id>
+            <url>http://profesores.is.escuelaing.edu.co/hcadavid/mvnmirror</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org2.pdsw.stubs</groupId>
+            <artifactId>DataSourceStub</artifactId>
+            <version>1.1</version>            
         </dependency>
     </dependencies>
 
@@ -85,6 +97,6 @@
                
             
         </plugins>
-    </build>
+    </build>  
 
 </project>

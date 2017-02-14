@@ -36,7 +36,7 @@ public class SampleServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Writer responseWriter=resp.getWriter();
-        responseWriter.write("Hola! "+(req.getParameter("nombre")!=null?req.getParameter("nombre"):""));
+        responseWriter.write("<html><h1>Hola! "+(req.getParameter("nombre")!=null?req.getParameter("nombre"):"") + "</h1></html>");
         responseWriter.flush();
         
     }
