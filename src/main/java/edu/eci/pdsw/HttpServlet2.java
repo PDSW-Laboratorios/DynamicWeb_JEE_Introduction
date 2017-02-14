@@ -30,9 +30,7 @@ public class HttpServlet2 extends HttpServlet{
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Writer responseWriter = resp.getWriter();
-        System.out.println("1: "+resp.getStatus());
         try {
-            System.out.println("2: "+resp.getStatus());
             DataSourceStub data = DataSourceStub.getInstance();
             Client client = data.getClientById(  Integer.parseInt(req.getParameter("id")) );
             responseWriter.write("<html>\n" +
@@ -63,21 +61,12 @@ public class HttpServlet2 extends HttpServlet{
 "\n" +
 "  </body>\n" +
 "</html>");
-            System.out.println("3: "+resp.getStatus());
             resp.setStatus(200);
-            System.out.println("4: "+resp.getStatus());
             
         } catch (ClientNotFoundException e){
-            System.out.println("5: "+resp.getStatus());
-            responseWriter.write("<html><center><h1>404</h1></center><center><p>No existe un cliente con el identificador dado.</p></center></html>");
-            responseWriter.flush();
             Logger.logMsg(Logger.ERROR, e.getMessage());
-            System.out.println("6: "+resp.getStatus());
-            resp.sendError(HttpServletResponse.SC_NOT_FOUND);
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "No existe un cliente con el identificador dado.");
             resp.flushBuffer();
-            System.out.println("7: "+resp.getStatus());
-            throw new ServletException(e.getMessage(), e);
         }
-        System.out.println("8: "+resp.getStatus());
     }
 }
